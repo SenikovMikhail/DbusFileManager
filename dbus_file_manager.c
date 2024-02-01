@@ -185,7 +185,9 @@ DBusHandlerResult server_message_handler(DBusConnection *conn, DBusMessage *mess
 				char command[32] = "open ";
 				strcat(command, file_path);
                 system(command);
-            }
+            } else {
+				
+			}
 
 			// dbus_message_append_args(reply,
 			// 			DBUS_TYPE_STRING, &auth_result,
