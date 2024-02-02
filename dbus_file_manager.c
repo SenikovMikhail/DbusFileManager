@@ -183,12 +183,16 @@ DBusHandlerResult server_message_handler(DBusConnection *conn, DBusMessage *mess
 			}
 			file_ext[ext_len] = '\0';
 			
-            if(!strcmp(file_ext, "pdf"))
-            {
-				char command[32] = "open ";
+		    if(!strcmp(file_ext, "pdf"))
+		    {
+					char command[32] = "open ";
+					strcat(command, file_path);
+			system(command);
+		    } else {
+
+			    	char command[32] = "open ";
 				strcat(command, file_path);
-                system(command);
-            } else {
+                		system(command);
 				
 			}
 
