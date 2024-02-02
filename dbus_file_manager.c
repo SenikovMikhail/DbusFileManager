@@ -113,7 +113,7 @@ DBusHandlerResult server_message_handler(DBusConnection *conn, DBusMessage *mess
 
 	if (dbus_message_is_method_call(message, DBUS_INTERFACE_INTROSPECTABLE, "Introspect")) {
 
-		if (!(reply = dbus_message_new_method_return(message))) {
+		if ((reply = dbus_message_new_method_return(message))) {
 
 			dbus_message_append_args(reply,
 						DBUS_TYPE_STRING, &server_introspection_xml,
