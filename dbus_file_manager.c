@@ -43,6 +43,9 @@ const char *server_introspection_xml =
     "		<method name='AvailableExtensions' >\n"
 	"      		<arg type='s' direction='out' />\n"
 	"    	</method>\n"
+
+	"    	<method name='Quit'>\n"
+	"    	</method>\n"
    	
 	"  </interface>\n"
 	"</node>\n";
@@ -206,6 +209,11 @@ DBusHandlerResult server_message_handler(DBusConnection *conn, DBusMessage *mess
                     DBUS_TYPE_INVALID);	
 
 		}
+
+	} else if (dbus_message_is_method_call(message, "org.MyFileManager.FileInterface", "Quit")) {
+
+		reply = dbus_message_new_method_return(message);
+		quit  = true;
 
 	}  else {	
 
